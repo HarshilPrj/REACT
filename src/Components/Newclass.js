@@ -4,9 +4,10 @@ import Button from "@mui/material/Button";
 import Container from "@mui/material/Container";
 
 export default class Newclass extends Component {
-  constructor() {
-    super();
-    this.state = { color: "green", counter: 0, counterColor: "green" };
+  constructor(props) {
+    super(props);
+
+    this.state = { color: 1, counter: 0, counterColor: "green" };
 
     this.increment = () => {
       this.setState({ counterColor: "green" });
@@ -17,18 +18,33 @@ export default class Newclass extends Component {
       this.setState({ counter: this.state.counter - 1 });
     };
   }
+
   shouldComponentUpdate() {
     return true;
   }
+
+  componentDidMount() {
+    console.log("componentDidMount");
+  }
+
+  componentDidUpdate() {
+    console.log("componentDidUpdate");
+  }
   changeColor = () => {
-    this.setState({ color: "red" });
+    this.setState({ color: this.state.color === 1 ? 2 : 1 });
   };
+
+  static getDerivedStateFromProps(props, state) {
+    if (props.counterColor !== state.counterColorprops) {
+      // return { counterColor: props.counterColor };
+    }
+  }
   render() {
     return (
       <>
         <Container maxWidth="sm">
-          <h1 style={{ color: this.state.color }}>
-            my color is {this.state.color}
+          <h1 style={{ color: this.state.color === 1 ? "red" : "green" }}>
+            my color is {this.state.color === 1 ? "Red" : "Green"}
           </h1>
           <Button variant="contained" onClick={this.changeColor}>
             Change Color
