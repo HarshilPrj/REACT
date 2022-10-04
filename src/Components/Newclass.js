@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import axios from "axios";
 import Stack from "@mui/material/Stack";
 import Button from "@mui/material/Button";
 import Container from "@mui/material/Container";
@@ -24,7 +25,20 @@ export default class Newclass extends Component {
   }
 
   componentDidMount() {
-    console.log("componentDidMount");
+    axios
+      .get(
+        "http://localhost:4000/api/users/profileData/b12d76a5-000d-4627-b2f2-69e37bf19ca6"
+      )
+      .then((res) => {
+        console.log(res);
+      });
+  }
+  getSnapshotBeforeUpdate(prevProps, prevState) {
+    // should be used with componentDidUpdate()
+    if (prevState.counter !== this.state.counter) {
+      console.log(true);
+    }
+    return null;
   }
 
   componentDidUpdate() {
@@ -36,7 +50,7 @@ export default class Newclass extends Component {
 
   static getDerivedStateFromProps(props, state) {
     if (props.counterColor !== state.counterColorprops) {
-      // return { counterColor: props.counterColor };
+      return { counterColor: state.counterColor };
     }
   }
   render() {
