@@ -34,11 +34,10 @@ export default class Newclass extends Component {
       });
   }
   getSnapshotBeforeUpdate(prevProps, prevState) {
+    document.getElementById(
+      "d1"
+    ).innerHTML = `Counter Value Before Upadet : ${prevState.counter}`;
     // should be used with componentDidUpdate()
-    if (prevState.counter !== this.state.counter) {
-      console.log(true);
-    }
-    return null;
   }
 
   componentDidUpdate() {
@@ -77,6 +76,9 @@ export default class Newclass extends Component {
             <Button variant="contained" onClick={this.decrement}>
               Decrement
             </Button>
+            <br />
+            <div id="d1"></div>
+            <div></div>
           </Stack>
         </Container>
       </>
