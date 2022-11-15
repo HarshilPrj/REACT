@@ -1,12 +1,13 @@
 import React from "react";
+import Darkmode from "./Components/Darkmode";
 import Form from "./Components/Form";
-import Newclass from "./Components/Newclass";
 
 function App() {
   return (
     <>
       <Form />
-      <Newclass counterColor="blue" />
+      <br />
+      <Darkmode />
     </>
   );
 }
