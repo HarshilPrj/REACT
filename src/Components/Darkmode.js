@@ -2,11 +2,12 @@ import * as React from "react";
 import { styled } from "@mui/material/styles";
 import Container from "@mui/material/Container";
 import ArrowForwardIosSharpIcon from "@mui/icons-material/ArrowForwardIosSharp";
+import DarkModeIcon from "@mui/icons-material/DarkMode";
+import DarkModeOutlinedIcon from "@mui/icons-material/DarkModeOutlined";
 import MuiAccordion from "@mui/material/Accordion";
 import MuiAccordionSummary from "@mui/material/AccordionSummary";
 import MuiAccordionDetails from "@mui/material/AccordionDetails";
 import Typography from "@mui/material/Typography";
-import Button from "@mui/material/Button";
 
 const Accordion = styled((props) => (
   <MuiAccordion disableGutters elevation={0} square {...props} />
@@ -50,6 +51,7 @@ const AccordionDetails = styled(MuiAccordionDetails)(({ theme }) => ({
 
 export default function Darkmode() {
   const [expanded, setExpanded] = React.useState("panel1");
+  const [mode, setMode] = React.useState("dark");
   const [icon, setIcon] = React.useState("black");
   const [darkMode, setDarkMode] = React.useState({
     backgroundColor: "white",
@@ -67,12 +69,14 @@ export default function Darkmode() {
         color: "white",
       });
       setIcon("white");
+      setMode("light");
     } else {
       setDarkMode({
         backgroundColor: "white",
         color: "black",
       });
       setIcon("black");
+      setMode("dark");
     }
   };
 
@@ -142,9 +146,11 @@ export default function Darkmode() {
         </AccordionDetails>
       </Accordion>
       <br />
-      <Button variant="contained" onClick={dark}>
-        Dark Mode
-      </Button>
+      {mode === "dark" ? (
+        <DarkModeIcon fontSize="large" onClick={dark} />
+      ) : (
+        <DarkModeOutlinedIcon fontSize="large" onClick={dark} />
+      )}
     </Container>
   );
 }
