@@ -20,6 +20,18 @@ export default function Registration() {
   const [pass, setPass] = useState("");
   const [gender, setGender] = useState("");
 
+  const handleSave = () => {
+    let data = {
+      firstName: fname,
+      lastName: lname,
+      email: email,
+      password: pass,
+      gender: gender,
+    };
+
+    localStorage.setItem("userData", JSON.stringify(data));
+  };
+
   return (
     <>
       <Box sx={{ display: "flex", justifyContent: "space-around" }}>
@@ -119,7 +131,7 @@ export default function Registration() {
               </Grid>
             </form>
             <Stack spacing={4} direction="row" sx={{ mt: 3 }}>
-              <Button variant="contained" onClick={"handleUpper"}>
+              <Button type="submit" variant="contained" onClick={handleSave}>
                 SingUp
               </Button>
             </Stack>
