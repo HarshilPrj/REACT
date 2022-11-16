@@ -38,7 +38,12 @@ function Appbar() {
             <Button sx={{ color: "#fff" }} onClick={() => navigate("/form")}>
               About
             </Button>
-            <Button sx={{ color: "#fff" }}>Login</Button>
+            <Button sx={{ color: "#fff" }} onClick={() => navigate("/login")}>
+              Login
+            </Button>
+            <Button sx={{ color: "#fff" }} onClick={() => navigate("/registration")}>
+            Registration
+            </Button>
           </Box>
         </Toolbar>
       </AppBar>
