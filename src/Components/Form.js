@@ -29,7 +29,7 @@ export default function Form() {
             id="outlined-basic"
             label="Enter the text.."
             variant="outlined"
-            sx={{ mt: 2 }}
+            sx={{ mt: 2, width: 600 }}
             onChange={(e) => {
               setText(e.target.value);
             }}
