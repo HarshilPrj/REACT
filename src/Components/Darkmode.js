@@ -70,6 +70,7 @@ export default function Darkmode() {
       });
       setIcon("white");
       setMode("light");
+      document.body.style.backgroundColor = "black";
     } else {
       setDarkMode({
         backgroundColor: "white",
@@ -77,6 +78,7 @@ export default function Darkmode() {
       });
       setIcon("black");
       setMode("dark");
+      document.body.style.backgroundColor = "white";
     }
   };
 

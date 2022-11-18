@@ -5,11 +5,21 @@ import IconButton from "@mui/material/IconButton";
 import MenuIcon from "@mui/icons-material/Menu";
 import Toolbar from "@mui/material/Toolbar";
 import Button from "@mui/material/Button";
+import FormControlLabel from "@mui/material/FormControlLabel";
+import Switch from "@mui/material/Switch";
 import { useNavigate } from "react-router-dom";
 
 function Appbar() {
   const navigate = useNavigate();
   const [mobileOpen, setMobileOpen] = React.useState(false);
+  const [loading, setLoading] = React.useState(true);
+
+  function handleClick() {
+    setLoading(true);
+    loading === true
+      ? (document.body.style.backgroundColor = "black")
+      : (document.body.style.backgroundColor = "white");
+  }
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
@@ -35,15 +45,34 @@ function Appbar() {
             >
               Home
             </Button>
-            <Button sx={{ color: "#fff" }} onClick={() => navigate("/form")}>
+            <Button sx={{ color: "#fff" }} onClick={() => navigate("/")}>
               About
             </Button>
             <Button sx={{ color: "#fff" }} onClick={() => navigate("/login")}>
               Login
             </Button>
-            <Button sx={{ color: "#fff" }} onClick={() => navigate("/registration")}>
-            Registration
+            <Button
+              sx={{ color: "#fff" }}
+              onClick={() => navigate("/registration")}
+            >
+              Registration
             </Button>
+            <FormControlLabel
+              sx={{
+                right: 0,
+                position: "absolute",
+              }}
+              control={
+                <Switch
+                  checked={loading}
+                  onChange={() => setLoading(!loading)}
+                  name="loading"
+                  color="primary"
+                  onClick={handleClick}
+                />
+              }
+              label="Enable Darkmode"
+            />
           </Box>
         </Toolbar>
       </AppBar>

@@ -11,8 +11,8 @@ function App() {
     <>
       <Appbar />
       <Routes>
+        <Route path="/" element={<Form />} />
         <Route path="/darkmode" element={<Darkmode />} />
-        <Route path="/form" element={<Form />} />
         <Route path="/login" element={<Login />} />
         <Route path="/registration" element={<Registration />} />
       </Routes>
