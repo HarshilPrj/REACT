@@ -11,13 +11,13 @@ export default function Form(props) {
   const handleUpper = () => {
     let newText = text.toUpperCase();
     setText(newText);
-    props.showAlert("Converted into Uppercase", "warning");
+    props.showAlert("Converted into Uppercase", "success");
   };
 
   const handleLower = () => {
     let newText = text.toLowerCase();
     setText(newText);
-    props.showAlert("Converted into Lowercase", "warning");
+    props.showAlert("Converted into Lowercase", "success");
   };
   return (
     <>
@@ -28,6 +28,7 @@ export default function Form(props) {
             multiline
             rows={8}
             fullWidth
+            color="primary"
             id="outlined-basic"
             label="Enter the text.."
             variant="outlined"

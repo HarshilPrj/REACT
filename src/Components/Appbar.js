@@ -71,7 +71,7 @@ function Appbar(props) {
                   checked={loading}
                   onChange={() => setLoading(!loading)}
                   name="loading"
-                  color="primary"
+                  color="secondary"
                   onClick={handleClick}
                 />
               }
