@@ -8,12 +8,16 @@ export default function Registration(props) {
   const [pass, setPass] = useState("");
 
   const handleClick = () => {
-    props.showAlert("Login SuccessFull", "success");
+    if (pass === "123") {
+      props.showAlert("Login Successfully", "success");
+    } else {
+      props.showAlert("Invalid Password", "error");
+    }
   };
 
   return (
     <>
-      <Box sx={{ display: "flex", justifyContent: "space-around" }}>
+      <Box sx={{ display: "flex", justifyContent: "space-around", mt: 2 }}>
         <PageContainer title="Login">
           <Paper sx={{ p: 5, width: "50rem" }} elevation={10}>
             <h3>Login</h3>

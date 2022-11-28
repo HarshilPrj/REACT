@@ -5,7 +5,7 @@ export default function AlertNew(props) {
   return (
     <>
       {props.alert && (
-        <Alert severity={`${props.alert.type}`}>
+        <Alert variant="filled" severity={`${props.alert.type}`}>
           <strong>{props.alert.msg}</strong>
         </Alert>
       )}
