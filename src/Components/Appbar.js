@@ -9,16 +9,20 @@ import FormControlLabel from "@mui/material/FormControlLabel";
 import Switch from "@mui/material/Switch";
 import { useNavigate } from "react-router-dom";
 
-function Appbar() {
+function Appbar(props) {
   const navigate = useNavigate();
   const [mobileOpen, setMobileOpen] = React.useState(false);
   const [loading, setLoading] = React.useState(true);
 
   function handleClick() {
     setLoading(true);
-    loading === true
-      ? (document.body.style.backgroundColor = "black")
-      : (document.body.style.backgroundColor = "white");
+    if (loading === true) {
+      document.body.style.backgroundColor = "#4747d1";
+      props.showAlert("Dark Mode Enabled", "success");
+    } else {
+      document.body.style.backgroundColor = "white";
+      props.showAlert("Light Mode Enabled", "success");
+    }
   }
 
   const handleDrawerToggle = () => {

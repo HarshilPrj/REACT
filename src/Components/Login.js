@@ -3,9 +3,13 @@ import { Paper, Grid, TextField, Button, Stack, Box } from "@mui/material";
 import CustomFormLabel from "./Custom/CustomFormLabel";
 import PageContainer from "./Custom/PageContainer";
 
-export default function Registration() {
+export default function Registration(props) {
   const [email, setEmail] = useState("");
   const [pass, setPass] = useState("");
+
+  const handleClick = () => {
+    props.showAlert("Login SuccessFull", "success");
+  };
 
   return (
     <>
@@ -50,7 +54,7 @@ export default function Registration() {
               </Grid>
             </form>
             <Stack spacing={4} direction="row" sx={{ mt: 3 }}>
-              <Button variant="contained" onClick={"handleUpper"}>
+              <Button variant="contained" onClick={handleClick}>
                 Login
               </Button>
             </Stack>

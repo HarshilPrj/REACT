@@ -5,17 +5,19 @@ import TextField from "@mui/material/TextField";
 import Stack from "@mui/material/Stack";
 import Button from "@mui/material/Button";
 
-export default function Form() {
+export default function Form(props) {
   const [text, setText] = useState("");
 
   const handleUpper = () => {
     let newText = text.toUpperCase();
     setText(newText);
+    props.showAlert("Converted into Uppercase", "warning");
   };
 
   const handleLower = () => {
     let newText = text.toLowerCase();
     setText(newText);
+    props.showAlert("Converted into Lowercase", "warning");
   };
   return (
     <>
