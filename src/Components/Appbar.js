@@ -17,12 +17,13 @@ function Appbar(props) {
   function handleClick() {
     setLoading(true);
     if (loading === true) {
-      document.body.style.backgroundColor = "#4747d1";
+      document.body.style.backgroundColor = "black";
       props.showAlert("Dark Mode Enabled", "success");
     } else {
       document.body.style.backgroundColor = "white";
       props.showAlert("Light Mode Enabled", "success");
     }
+    props.mode2();
   }
 
   const handleDrawerToggle = () => {

@@ -2,8 +2,6 @@ import * as React from "react";
 import { styled } from "@mui/material/styles";
 import Container from "@mui/material/Container";
 import ArrowForwardIosSharpIcon from "@mui/icons-material/ArrowForwardIosSharp";
-import DarkModeIcon from "@mui/icons-material/DarkMode";
-import DarkModeOutlinedIcon from "@mui/icons-material/DarkModeOutlined";
 import MuiAccordion from "@mui/material/Accordion";
 import MuiAccordionSummary from "@mui/material/AccordionSummary";
 import MuiAccordionDetails from "@mui/material/AccordionDetails";
@@ -49,110 +47,86 @@ const AccordionDetails = styled(MuiAccordionDetails)(({ theme }) => ({
   borderTop: "1px solid rgba(0, 0, 0, .125)",
 }));
 
-export default function Darkmode() {
+export default function Darkmode(props) {
   const [expanded, setExpanded] = React.useState("panel1");
-  const [mode, setMode] = React.useState("dark");
-  const [icon, setIcon] = React.useState("black");
-  const [darkMode, setDarkMode] = React.useState({
-    backgroundColor: "white",
-    color: "black",
-  });
 
   const handleChange = (panel) => (event, newExpanded) => {
     setExpanded(newExpanded ? panel : false);
   };
 
-  const dark = () => {
-    if (darkMode.color === "black") {
-      setDarkMode({
-        backgroundColor: "black",
-        color: "white",
-      });
-      setIcon("white");
-      setMode("light");
-      document.body.style.backgroundColor = "black";
-    } else {
-      setDarkMode({
-        backgroundColor: "white",
-        color: "black",
-      });
-      setIcon("black");
-      setMode("dark");
-      document.body.style.backgroundColor = "white";
-    }
+  let myStyle = {
+    color: props.mode === "light" ? "black" : "white",
+    backgroundColor: props.mode === "light" ? "white" : "black",
   };
 
   return (
-    <Container maxWidth="sm">
+    <Container maxWidth="xl">
       <Accordion
         expanded={expanded === "panel1"}
         onChange={handleChange("panel1")}
-        sx={darkMode}
+        sx={myStyle}
       >
-        <AccordionSummary
-          mode={icon}
-          aria-controls="panel1d-content"
-          id="panel1d-header"
-        >
+        <AccordionSummary aria-controls="panel1d-content" id="panel1d-header">
           <Typography>Step 1</Typography>
         </AccordionSummary>
-        <AccordionDetails>
+        <AccordionDetails sx={myStyle}>
           <Typography>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
-            malesuada lacus ex, sit amet blandit leo lobortis eget. Lorem ipsum
-            dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada
-            lacus ex, sit amet blandit leo lobortis eget.
+            Lorem Ipsum is simply dummy text of the printing and typesetting
+            industry. Lorem Ipsum has been the industry's standard dummy text
+            ever since the 1500s, when an unknown printer took a galley of type
+            and scrambled it to make a type specimen book. It has survived not
+            only five centuries, but also the leap into electronic typesetting,
+            remaining essentially unchanged. It was popularised in the 1960s
+            with the release of Letraset sheets containing Lorem Ipsum passages,
+            and more recently with desktop publishing software like Aldus
+            PageMaker including versions of Lorem Ipsum
           </Typography>
         </AccordionDetails>
       </Accordion>
       <Accordion
         expanded={expanded === "panel2"}
         onChange={handleChange("panel2")}
-        sx={darkMode}
+        sx={myStyle}
       >
-        <AccordionSummary
-          mode={icon}
-          aria-controls="panel2d-content"
-          id="panel2d-header"
-        >
+        <AccordionSummary aria-controls="panel2d-content" id="panel2d-header">
           <Typography>Step 2</Typography>
         </AccordionSummary>
-        <AccordionDetails>
+        <AccordionDetails sx={myStyle}>
           <Typography>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
-            malesuada lacus ex, sit amet blandit leo lobortis eget. Lorem ipsum
-            dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada
-            lacus ex, sit amet blandit leo lobortis eget.
+            Lorem Ipsum is simply dummy text of the printing and typesetting
+            industry. Lorem Ipsum has been the industry's standard dummy text
+            ever since the 1500s, when an unknown printer took a galley of type
+            and scrambled it to make a type specimen book. It has survived not
+            only five centuries, but also the leap into electronic typesetting,
+            remaining essentially unchanged. It was popularised in the 1960s
+            with the release of Letraset sheets containing Lorem Ipsum passages,
+            and more recently with desktop publishing software like Aldus
+            PageMaker including versions of Lorem Ipsum
           </Typography>
         </AccordionDetails>
       </Accordion>
       <Accordion
         expanded={expanded === "panel3"}
         onChange={handleChange("panel3")}
-        sx={darkMode}
+        sx={myStyle}
       >
-        <AccordionSummary
-          aria-controls="panel3d-content"
-          id="panel3d-header"
-          mode={icon}
-        >
+        <AccordionSummary aria-controls="panel3d-content" id="panel3d-header">
           <Typography>Step 3</Typography>
         </AccordionSummary>
-        <AccordionDetails>
+        <AccordionDetails sx={myStyle}>
           <Typography>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
-            malesuada lacus ex, sit amet blandit leo lobortis eget. Lorem ipsum
-            dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada
-            lacus ex, sit amet blandit leo lobortis eget.
+            Lorem Ipsum is simply dummy text of the printing and typesetting
+            industry. Lorem Ipsum has been the industry's standard dummy text
+            ever since the 1500s, when an unknown printer took a galley of type
+            and scrambled it to make a type specimen book. It has survived not
+            only five centuries, but also the leap into electronic typesetting,
+            remaining essentially unchanged. It was popularised in the 1960s
+            with the release of Letraset sheets containing Lorem Ipsum passages,
+            and more recently with desktop publishing software like Aldus
+            PageMaker including versions of Lorem Ipsum
           </Typography>
         </AccordionDetails>
       </Accordion>
-      <br />
-      {mode === "dark" ? (
-        <DarkModeIcon fontSize="large" onClick={dark} />
-      ) : (
-        <DarkModeOutlinedIcon fontSize="large" onClick={dark} />
-      )}
     </Container>
   );
 }

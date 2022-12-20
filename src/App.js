@@ -8,32 +8,47 @@ import Registration from "./Components/Registration";
 import AlertNew from "./Components/Alert";
 
 function App() {
-  const [alert, setAlert] = useState(null);
+    const [alert, setAlert] = useState(null);
+    const [mode, setMode] = useState("light");
 
-  const showAlert = (msg, type) => {
-    setAlert({
-      msg: msg,
-      type: type,
-    });
-    setTimeout(() => {
-      setAlert(null);
-    }, 1500);
-  };
-  return (
-    <>
-      <Appbar showAlert={showAlert} />
-      <AlertNew alert={alert} />
-      <Routes>
-        <Route path="/" element={<Form showAlert={showAlert} />} />
-        <Route path="/darkmode" element={<Darkmode showAlert={showAlert} />} />
-        <Route path="/login" element={<Login showAlert={showAlert} />} />
-        <Route
-          path="/registration"
-          element={<Registration showAlert={showAlert} />}
-        />
-      </Routes>
-    </>
-  );
+    const mode2 = () => {
+        mode === "light" ? setMode("dark") : setMode("light");
+    };
+
+    const showAlert = (msg, type) => {
+        setAlert({
+            msg: msg,
+            type: type,
+        });
+        setTimeout(() => {
+            setAlert(null);
+        }, 1500);
+    };
+
+    return (
+        <>
+            <Appbar showAlert={showAlert} mode2={mode2} />
+            <AlertNew alert={alert} />
+            <Routes>
+                <Route
+                    path="/"
+                    element={<Form showAlert={showAlert} mode={mode} />}
+                />
+                <Route
+                    path="/darkmode"
+                    element={<Darkmode showAlert={showAlert} mode={mode} />}
+                />
+                <Route
+                    path="/login"
+                    element={<Login showAlert={showAlert} />}
+                />
+                <Route
+                    path="/registration"
+                    element={<Registration showAlert={showAlert} />}
+                />
+            </Routes>
+        </>
+    );
 }
 
 export default App;
