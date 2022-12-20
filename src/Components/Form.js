@@ -11,8 +11,7 @@ export default function Form(props) {
   let myStyle = {
     color: props.mode === "light" ? "black" : "white",
     backgroundColor: props.mode === "light" ? "white" : "#a3a3c2",
-    border: "2px solid",
-    borderColor: props.mode === "light" ? "black" : "white",
+    border: `2px solid ${props.mode === "light" ? "black" : "white"}`,
     mt: 2,
     width: 600,
   };
@@ -53,11 +52,7 @@ export default function Form(props) {
             }}
           />
 
-          <h3
-            style={{
-              color: props.mode === "light" ? "black" : "white",
-            }}
-          >
+          <h3 style={{ color: myStyle.color }}>
             {
               text.split(" ").filter((e) => {
                 return e.length !== 0;
