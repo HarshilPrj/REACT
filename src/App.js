@@ -1,3 +1,4 @@
+import './App.css'
 import React, { useState } from 'react';
 import Appbar from './Components/Appbar';
 import Darkmode from './Components/Darkmode';

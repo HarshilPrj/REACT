@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useReducer } from 'react';
 import { Paper, Grid, TextField, Button, Stack, Box } from '@mui/material';
 import CustomFormLabel from './Custom/CustomFormLabel';
 import PageContainer from './Custom/PageContainer';
+import { reducer, initialState } from './Reducer';
 
 export default function Registration(props) {
     const [email, setEmail] = useState('');
@@ -27,6 +28,8 @@ export default function Registration(props) {
             props.showAlert('Invalid Password', 'error');
         }
     };
+
+    const [state, dispatch] = useReducer(reducer, initialState);
 
     return (
         <>
@@ -84,6 +87,29 @@ export default function Registration(props) {
                             </Button>
                         </Stack>
                     </Paper>
+                    <div className="m-8">
+                        <p className={`m-8 font-semibold ${props.mode === 'light' ? 'text-black' : 'text-white'}`}>
+                            Current Value : {state}
+                        </p>
+                        <Stack spacing={2} direction="row" sx={{ mt: 3 }}>
+                            <Button
+                                variant="contained"
+                                onClick={() => {
+                                    dispatch({ type: 'add' });
+                                }}
+                            >
+                                +
+                            </Button>
+                            <Button
+                                variant="contained"
+                                onClick={() => {
+                                    dispatch({ type: 'minus' });
+                                }}
+                            >
+                                -
+                            </Button>
+                        </Stack>
+                    </div>
                 </PageContainer>
             </Box>
         </>
