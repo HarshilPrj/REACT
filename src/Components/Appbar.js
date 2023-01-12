@@ -18,10 +18,8 @@ function Appbar(props) {
         setLoading(true);
         if (loading === true) {
             document.body.style.backgroundColor = '#33334d';
-            props.showAlert('Dark Mode Enabled', 'success');
         } else {
             document.body.style.backgroundColor = 'white';
-            props.showAlert('Light Mode Enabled', 'success');
         }
         props.mode2();
     }

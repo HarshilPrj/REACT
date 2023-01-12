@@ -3,10 +3,11 @@ import { Paper, Grid, TextField, Button, Stack, Box } from '@mui/material';
 import CustomFormLabel from './Custom/CustomFormLabel';
 import PageContainer from './Custom/PageContainer';
 import { reducer, initialState } from './Reducer';
+import axios from 'axios';
 
 export default function Registration(props) {
     const [email, setEmail] = useState('');
-    const [pass, setPass] = useState('');
+    const [password, setPass] = useState('');
 
     let myStyle = {
         color: props.mode === 'light' ? 'white' : '#33334d',
@@ -21,15 +22,21 @@ export default function Registration(props) {
         backgroundColor: 'white',
     };
 
-    const handleClick = () => {
-        if (pass === '123') {
-            props.showAlert('Login Successfully', 'success');
-        } else {
-            props.showAlert('Invalid Password', 'error');
-        }
-    };
-
     const [state, dispatch] = useReducer(reducer, initialState);
+
+    const handleLogin = () => {
+        axios
+            .post('http://localhost:4000/api/v1/auth/login', {
+                email,
+                password,
+            })
+            .then((res) => {
+                console.log(res);
+            })
+            .catch((err) => {
+                console.log(err);
+            });
+    };
 
     return (
         <>
@@ -73,7 +80,7 @@ export default function Registration(props) {
                                         type="password"
                                         id="password"
                                         variant="outlined"
-                                        defaultValue={pass}
+                                        defaultValue={password}
                                         fullWidth
                                         size="small"
                                         onChange={(e) => setPass(e.target.value)}
@@ -82,7 +89,7 @@ export default function Registration(props) {
                             </Grid>
                         </form>
                         <Stack spacing={4} direction="row" sx={{ mt: 3 }}>
-                            <Button variant="contained" onClick={handleClick}>
+                            <Button variant="contained" onClick={handleLogin}>
                                 Login
                             </Button>
                         </Stack>

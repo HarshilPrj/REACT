@@ -1,4 +1,5 @@
 const initialState = 0;
+const alert = null;
 
 const reducer = (state, action) => {
     if (action.type === 'add') {
@@ -9,4 +10,4 @@ const reducer = (state, action) => {
     }
 };
 
-export { reducer, initialState };
+export { reducer, initialState, alert };

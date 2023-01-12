@@ -11,7 +11,6 @@ import { ThemeContext } from './Context';
 
 function App() {
     const [mode, setMode] = useState('light');
-
     const [alert, setAlert] = useState(null);
 
     const mode2 = () => {
